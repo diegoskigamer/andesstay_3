@@ -3,7 +3,7 @@ server:
 spring:
   application:
     name: ms-andesstay-catalog
-    datasource:
+  datasource:
     url: ${DB_URL:jdbc:h2:mem:catalog;DB_CLOSE_DELAY=-1}
     driver-class-name: ${DB_DRIVER:org.h2.Driver}
     username: ${DB_USER:sa}
