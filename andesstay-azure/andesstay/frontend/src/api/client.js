@@ -47,6 +47,11 @@ export const ReservationsApi = {
     request(`/api/reservations/${id}/status`, { method: "PUT", body: JSON.stringify(payload) }),
 };
 
+// NUEVO: envía a Kafka (vía BFF -> reservations) un mensaje inválido para provocar un error en los consumidores.
+export const KafkaApi = {
+  simulateError: () => request("/api/reservations/kafka-error-test", { method: "POST" }),
+};
+
 export const CatalogApi = {
   listUnits: () => request("/api/catalog/units"),
   getUnit: (id) => request(`/api/catalog/units/${id}`),

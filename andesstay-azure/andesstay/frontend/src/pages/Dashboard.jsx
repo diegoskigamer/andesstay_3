@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { ReservationsApi, ReportApi } from "../api/client";
 import { useSession, ROLES } from "../context/SessionContext";
 import StatusBadge from "../components/StatusBadge";
+import KafkaErrorTest from "../components/KafkaErrorTest"; // NUEVO
 
 export default function Dashboard() {
   const { role, name } = useSession();
@@ -63,6 +64,8 @@ export default function Dashboard() {
           <ReservationList title="Salidas de hoy" items={departuresToday} />
         </div>
       )}
+
+      {role === ROLES.ADMIN && <KafkaErrorTest />} {/* NUEVO */}
 
       {role === ROLES.HUESPED && (
         <ReservationList title={`Mis reservas (${name})`} items={myReservations} empty="No tienes reservas con ese nombre todavía." />
